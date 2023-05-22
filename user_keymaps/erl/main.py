@@ -43,22 +43,31 @@ XXXXXXX = KC.NO
 
 # Mod-taps: Layer 0
 A_LGUI = KC.HT(KC.A, KC.LGUI)
-S_LALT = KC.HT(KC.S, KC.LALT)
+S_LSFT = KC.HT(KC.S, KC.LSFT)
 D_LCTL = KC.HT(KC.S, KC.LCTL)
-F_LSFT = KC.HT(KC.S, KC.LSFT)
-J_RSFT = KC.HT(KC.J, KC.RSFT)
+S_LALT = KC.HT(KC.S, KC.LALT)
+J_RALT = KC.HT(KC.J, KC.RALT)
 K_RCTL = KC.HT(KC.K, KC.RCTL)
-L_RALT = KC.HT(KC.L, KC.RALT)
+L_RSFT = KC.HT(KC.L, KC.RSFT)
 P_RGUI = KC.HT(KC.P, KC.RGUI)
 # Mod-taps: Layer 1
 N1_LGUI = KC.HT(KC.N1, KC.LGUI)
-N2_LALT = KC.HT(KC.N2, KC.LALT)
+N2_LSFT = KC.HT(KC.N2, KC.LSFT)
 N3_LCTL = KC.HT(KC.N3, KC.LCTL)
-N4_LSFT = KC.HT(KC.N4, KC.LSFT)
-AD_RSFT = KC.HT(KC.DOWN, KC.RSFT)
+N4_LALT = KC.HT(KC.N4, KC.LALT)
+AD_RALT = KC.HT(KC.DOWN, KC.RALT)
 AU_RCTL = KC.HT(KC.UP, KC.RCTL)
-AR_RALT = KC.HT(KC.RIGHT, KC.RALT)
+AR_RSFT = KC.HT(KC.RIGHT, KC.RSFT)
 DL_RGUI = KC.HT(KC.DEL, KC.RGUI)
+# Mod-taps: Layer 2
+F6_LGUI = KC.HT(KC.F6, KC.LGUI)
+F7_LSFT = KC.HT(KC.F7, KC.LSFT)
+F8_LCTL = KC.HT(KC.F8, KC.LCTL)
+F9_LALT = KC.HT(KC.F9, KC.LALT)
+N8_RALT = KC.HT(KC.N8, KC.RALT)
+N7_RCTL = KC.HT(KC.N7, KC.RCTL)
+N6_RSFT = KC.HT(KC.N6, KC.RSFT)
+N5_RGUI = KC.HT(KC.N5, KC.RGUI)
 
 # Layer tap: Layer 0
 L1_SPC = KC.LT(1, KC.SPC)
@@ -68,27 +77,32 @@ TO__L1 = KC.TO(1)
 TO__L0 = KC.TO(0)
 MO__L2 = KC.MO(2)
 TO__L2 = KC.TO(2)
+# Layer tap: Layer 2
+TO__L1 = KC.TO(1)
+MO__L3 = KC.MO(3)
+TO__L3 = KC.TO(3)
+
 
 # fmt: off
 # flake8: noqa
 keyboard.keymap = [
     [  # 0: Default
-     KC.ESC,    KC.W,    KC.E,    KC.R,    KC.T,    KC.Y,    KC.U,    KC.I,    KC.O, KC.BSPC,
-     A_LGUI,  S_LALT,  D_LCTL,  F_LSFT,    KC.G,    KC.H,  J_RSFT,  K_RCTL,  L_RALT,  P_RGUI,
-       KC.Z,    KC.X,    KC.C,    KC.V,    KC.B,    KC.N,    KC.M,    KC.Q, KC.COLN, KC.EXLM,
+      KC.ESC,    KC.W,    KC.E,    KC.R,    KC.T,    KC.Y,    KC.U,    KC.I,    KC.O, KC.BSPC,
+      A_LGUI,  S_LSFT,  D_LCTL,  S_LALT,    KC.G,    KC.H,  J_RALT,  K_RCTL,  L_RSFT,  P_RGUI,
+        KC.Z,    KC.X,    KC.C,    KC.V,    KC.B,    KC.N,    KC.M,    KC.Q, KC.COLN, KC.EXLM,
                                 KC.TAB,  L2_ENT,  L1_SPC,  TO__L1,
     ],
-    [  # 1: Numbers(left), Navigation/Audio(right)
-    XXXXXXX, XXXXXXX,   KC.N9, KC.LBRC, KC.QUOT, KC.HOME, KC.PGDN, KC.PGUP,  KC.END, _______,
-    N1_LGUI, N2_LALT, N3_LCTL, N4_LSFT, KC.COMM, KC.RGHT, AD_RSFT, AU_RCTL, AR_RALT, DL_RGUI,
-    KC.CAPS,  KC.GRV, KC.BSLS, KC.SCLN, XXXXXXX, KC.MUTE, KC.VOLU, KC.VOLD, KC.MPLY, KC.MSTP,
-                                TO__L0,  MO__L2, _______,  TO__L2,
+    [  # 1: Numbers (left), Navigation/Audio (right)
+     XXXXXXX, XXXXXXX,   KC.N9, KC.LBRC, KC.QUOT, KC.HOME, KC.PGDN, KC.PGUP,  KC.END, _______,
+     N1_LGUI, N2_LSFT, N3_LCTL, N4_LALT, KC.COMM, KC.RGHT, AD_RALT, AU_RCTL, AR_RSFT, DL_RGUI,
+     KC.CAPS,  KC.GRV, KC.BSLS, KC.SCLN, XXXXXXX, KC.MUTE, KC.VOLU, KC.VOLD, KC.MPLY, KC.MSTP,
+                                 TO__L0,  MO__L2, _______,  TO__L2,
     ],
-    [  # NAVIGATION
-    _______, _______, KC.PGUP, _______, _______, _______, _______, _______, _______, _______,
-    KC.LEFT,   KC.UP, KC.DOWN, KC.RGHT, _______, _______, KC.LGUI, CTL_ALT,  KC.MEH, KC.HYPR,
-    _______, KC.HOME, KC.PGDN,  KC.END, _______, _______, _______, _______, _______, _______,
-                               _______, _______, _______, _______,
+    [  # 2: Function Keys (left), Numbers (right)
+       KC.F1,   KC.F2,   KC.F3,   KC.F4,   KC.F5, KC.QUOT, KC.RBRC,   KC.N0, XXXXXXX, _______,
+     F6_LGUI, F7_LSFT, F8_LCTL, F9_LALT,  KC.F10,  KC.DOT, N8_RALT, N7_RCTL, N6_RSFT, N5_RGUI,
+      KC.F11,  KC.F12, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC.SLSH, KC.MINS,  KC.EQL, XXXXXXX,
+                                 TO__L1,  MO__L3, _______,  TO__L3,
     ],
     [  # RIGHT SYMBOLS
     _______, _______, _______, _______, _______, _______, KC.UNDS, KC.PIPE, KC.QUOT, _______,
